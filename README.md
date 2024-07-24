@@ -27,5 +27,6 @@ yarn dev
 After this, the project will get started on the `localhost:5173`.
 
 ## Screenshots of the project:
+![Crop Data Visualiser](https://github.com/user-attachments/assets/d1de3099-cad3-4f5a-adc5-623318e1eb9f)
 
-<img src="https://drive.google.com/file/d/1G2MHrUgVHTKEatiCwwO8m_PY9y68oH4q/view?usp=sharing" alt="Image description"/>
+
