@@ -87,13 +87,20 @@ const CropTable: React.FC = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ padding: "2rem" }}>
+      <Title
+        style={{
+          padding: "2rem",
+        }}
+      >
+        Crop Production Statistics:
+      </Title>
       <ScrollArea
         h={500}
-        w={1500}
+        w={1000}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
       >
-        <Table miw={700}>
+        <Table striped miw={700}>
           <Table.Thead
             className={cx(classes.header, { [classes.scrolled]: scrolled })}
           >

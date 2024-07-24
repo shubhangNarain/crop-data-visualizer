@@ -3,7 +3,6 @@
     top: 0;
     background-color: var(--mantine-color-body);
     transition: box-shadow 150ms ease;
-    border: 2px solid black;
   
     &::after {
       content: '';

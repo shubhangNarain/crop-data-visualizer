@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { Table, Container,ScrollArea, Title } from "@mantine/core";
+import { Table, Container, ScrollArea, Title } from "@mantine/core";
 import cx from "clsx";
 import classes from "./CropTable.module.css";
 
@@ -26,7 +26,7 @@ interface CropStats {
 }
 
 const CropTableTwo: React.FC = () => {
-    const [scrolled, setScrolled] = useState<boolean>(false)
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const [cropData, setCropData] = useState<CropData[]>([]);
   const [aggregatedData, setAggregatedData] = useState<AggregatedData[]>([]);
   const [cropStats, setCropStats] = useState<CropStats[]>([]);
@@ -92,7 +92,7 @@ const CropTableTwo: React.FC = () => {
 
         // Aggregate data by crop
         const cropNames = [
-          ...new Set(processedData.map((item) => item.CropName)),
+          ...new Set(processedData.map((item: CropData) => item.CropName)),
         ];
         const stats: CropStats[] = [];
 
@@ -101,11 +101,11 @@ const CropTableTwo: React.FC = () => {
             (item: CropStats) => item.CropName === cropName
           );
           const totalYield = crops.reduce(
-            (sum, crop) => sum + crop.YieldOfCrops,
+            (sum: number, crop: CropData) => sum + crop.YieldOfCrops,
             0
           );
           const totalArea = crops.reduce(
-            (sum, crop) => sum + crop.AreaUnderCultivation,
+            (sum: number, crop: CropData) => sum + crop.AreaUnderCultivation,
             0
           );
           const averageYield = totalYield / crops.length;
@@ -123,17 +123,17 @@ const CropTableTwo: React.FC = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ padding: "2rem" }}>
+      <Title style={{ padding: "2rem" }}>Crop Statistics (1950-2020)</Title>
       <ScrollArea
         h={500}
-        w={1500}
+        w={1000}
         onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
       >
-        <Title order={2} style={{ marginTop: "2rem" }}>
-          Crop Statistics (1950-2020)
-        </Title>
         <Table>
-          <Table.Thead>
+          <Table.Thead
+            className={cx(classes.header, { [classes.scrolled]: scrolled })}
+          >
             <Table.Tr>
               <Table.Th>Crop Name</Table.Th>
               <Table.Th>Average Yield (Kg/Ha)</Table.Th>
